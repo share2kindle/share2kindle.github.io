@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>welcome to home of share2kindle</title>
+		<style>
+			button {
+				padding-left: 20px;
+				padding-right: 20px;
+				margin: 0px;
+				height: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<p><button>进入网站主页（待发布...）</button></p>
+			<p><button id="bt_ip_address" onclick="goMyServer()">进入Android/PC版主页</button></p>
+		</center>
+		<script src="js/cookie-utils.js"></script>
+		<script>
+			var ip_address = getCookie("ip_address");
+
+			function goMyServer() {
+				if(!ip_address) {
+					var address = prompt("请输入服务器地址", "192.168.1.1");
+					if(!address) {
+						return;
+					}
+					ip_address = address;
+					setCookie("ip_address", address);
+					alert("设置成功！\n服务器主机：" + address);
+					return;
+				}
+				alert("正在跳转，请稍后...")
+			}
+		</script>
+	</body>
+
+</html>
